@@ -25,26 +25,20 @@ for c in p:
 
 def insert(pairs):
     new_pairs = {}
-    for pair in pairs.keys():
-        nbr = pairs[pair]
+    for pair, ammount in pairs.items():
         middle = h[pair]
-        pair = pair[0] + middle + pair[1]
+        p1 = pair[0] + middle 
+        p2 = middle + pair[1]
         if middle in count:
-            count[middle] += nbr
+            count[middle] += ammount
         else:
-            count[middle] = nbr
-        p1 = pair[0:2]
-        p2 = pair[1:3]
-        if p1 in h:
-            if p1 in new_pairs:
-                new_pairs[p1] += nbr
-            else:
-                new_pairs[p1] = nbr
-        if p2 in h:
-            if p2 in new_pairs:
-                new_pairs[p2] += nbr
-            else:
-                new_pairs[p2] = nbr
+            count[middle] = ammount
+        for pair in (p1,p2):
+            if pair in h:
+                if pair in new_pairs:
+                    new_pairs[pair] += ammount
+                else:
+                    new_pairs[pair] = ammount
     return new_pairs
 
 
